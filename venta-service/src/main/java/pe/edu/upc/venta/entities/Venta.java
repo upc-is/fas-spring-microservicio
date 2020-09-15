@@ -3,7 +3,9 @@ package pe.edu.upc.venta.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "ventas")
@@ -30,4 +32,11 @@ public class Venta {
 
     @Column(length = 1, nullable = false)
     private String status;
+
+    @OneToMany(mappedBy = "venta")
+    private List< DetalleVenta > detalleVentas;
+
+    public Venta() {
+        detalleVentas = new ArrayList<>();
+    }
 }

@@ -47,4 +47,8 @@ public class ClienteServiceImpl implements ClienteService {
         clienteRepository.deleteById(aLong);
     }
 
+    @Override
+    public Optional<Cliente> findByNumeroDocumento(String numeroDocumento) throws Exception {
+        return clienteRepository.findByNumeroDocumento(numeroDocumento);
+    }
 }
