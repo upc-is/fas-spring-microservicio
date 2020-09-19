@@ -1,6 +1,7 @@
 package pe.edu.upc.venta.entities;
 
 import lombok.Data;
+import pe.edu.upc.venta.models.Cliente;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,9 +16,8 @@ public class Venta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    @Column(name = "cliente_id")
+    private Long clienteId;
 
     @Column(name = "fecha_venta")
     @Temporal(TemporalType.TIMESTAMP)
@@ -39,4 +39,7 @@ public class Venta {
     public Venta() {
         detalleVentas = new ArrayList<>();
     }
+
+    @Transient
+    private Cliente cliente;
 }

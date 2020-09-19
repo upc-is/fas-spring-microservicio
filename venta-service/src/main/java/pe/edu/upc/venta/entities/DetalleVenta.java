@@ -1,6 +1,7 @@
 package pe.edu.upc.venta.entities;
 
 import lombok.Data;
+import pe.edu.upc.venta.models.Producto;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,9 +18,8 @@ public class DetalleVenta {
     @JoinColumn(name = "venta_id")
     private Venta venta;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "producto_id")
-    private Producto producto;
+    @Column(name = "producto_id")
+    private Long productoId;
 
     @Column(nullable = false)
     private Integer cantidad;
@@ -36,4 +36,7 @@ public class DetalleVenta {
 
     @Column(length = 1, nullable = false)
     private String status;
+
+    @Transient
+    private Producto producto;
 }
