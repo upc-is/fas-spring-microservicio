@@ -31,6 +31,8 @@ public class VentaController {
         }
     }
 
+
+
     @GetMapping(path = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Venta> fetchById(@PathVariable("id") Long id) {
         try {
